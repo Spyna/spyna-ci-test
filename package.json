@@ -1,0 +1,39 @@
+{
+  "name": "spyna-ci-test",
+  "version": "1.0.0",
+  "repository": "git@github.com:Spyna/spyna-ci-test.git",
+  "author": "Spyna <lscaper@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "unpkg": "dist/spyna-ci-test.js",
+  "jsnext:main": "dist/index.es.js",
+  "files": [
+    "dist",
+    "es"
+  ],
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "dependencies": {
+    "standard-version": "^7.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "jest": "^25.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.3.4",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-url": "^3.0.1"
+  },
+  "scripts": {
+    "release": "standard-version",
+    "build": "rimraf dist && rollup -c && npm run build:es",
+    "build:es": "rimraf es && babel src --out-dir es",
+    "test": "CI=true jest"
+  }
+}
