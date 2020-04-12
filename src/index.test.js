@@ -13,6 +13,6 @@ describe("My lib tests", () => {
   it("should greet an undefined user", () => {
     const greet = Greet();
 
-    expect(greet).toBe("Hello");
+    expect(greet).toBe("Hello ");
   });
 });
