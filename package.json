@@ -1,6 +1,6 @@
 {
   "name": "spyna-ci-test",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": "git@github.com:Spyna/spyna-ci-test.git",
   "author": "Spyna <lscaper@gmail.com>",
   "license": "MIT",
