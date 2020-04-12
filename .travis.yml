@@ -7,4 +7,4 @@ deploy:
     tags: true
   provider: npm
   email: "YOUR_EMAIL_ADDRESS"
-  api_key: "YOUR_AUTH_TOKEN"
+  api_key: $NPM_TOKEN
