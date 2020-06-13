@@ -15,8 +15,7 @@ jobs:
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
+          restore-keys: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Github Package Registry
