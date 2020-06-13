@@ -10,13 +10,21 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.9
-      - uses: actions/cache@v2
+      - name: Cache mvn repo
+        uses: actions/cache@v2
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-      - name: Publish package
-        run: mvn -B -X deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to Github Package Registry
+        run: |
+          mkdir ~/.m2
+          echo "<settings><servers><server><id>github</id><username>OWNER</username><password>${GITHUB_TOKEN}</password></server></servers></settings>" > ~/.m2/settings.xml
+          mvn deploy
+      # - name: Publish package
+      #   run: mvn -B -X deploy
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
