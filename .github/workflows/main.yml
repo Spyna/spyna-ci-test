@@ -18,6 +18,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       - name: Deploy to Github Package Registry
-        run: mvn -B -X deploy
+        run: mvn -B deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MAVEN_DEPLOY }}
